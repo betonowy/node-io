@@ -9,6 +9,6 @@ app.get('/', (req, res) => {
   res.send('Hello World!')
 })
 
-app.listen(port, () => {
-  console.log(di + `Listening at https://localhost:${process.env.port}`);
+app.listen(() => {
+  console.log(di + `Listening at https://localhost:${process.env.SERVER_PORT}`);
 })
