@@ -7,9 +7,9 @@ const express = require('express')
 const app = express()
 
 app.get('/', (req, res) => {
-  res.send('Hello World!')
+    res.send('Hello World!')
 })
 
-app.listen(() => {
-  console.log(di + `Listening at https://localhost:${serverPort}`);
+app.listen(serverPort, () => {
+    console.log(di + `Listening at https://localhost:${serverPort}`);
 })
