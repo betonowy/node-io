@@ -1,6 +1,7 @@
 // debug identity
 const di = '[server.js] ';
-
+// constant variables
+const serverPort = process.env.SERVER_PORT;
 // dependencies
 const express = require('express')
 const app = express()
@@ -10,5 +11,5 @@ app.get('/', (req, res) => {
 })
 
 app.listen(() => {
-  console.log(di + `Listening at https://localhost:${process.env.SERVER_PORT}`);
+  console.log(di + `Listening at https://localhost:${serverPort}`);
 })
