@@ -8,6 +8,7 @@ const tokenSchema = require('../models/issued-token');
 module.exports = function (req, res) {
     if (req.body.username == null || req.body.username === '' ||
         req.body.password == null || req.body.password === '') {
+        console.log(di + "insufficient login data");
         res.json({
             status: false,
             msg: messages.errorInsufficient
@@ -15,6 +16,7 @@ module.exports = function (req, res) {
     } else {
         userSchema.findOne({'username': req.body.username}, function (err, user) {
             if (err) {
+                console.log(di + "database error");
                 return res.json({
                     status: false,
                     msg: messages.errorDatabaseError
@@ -35,11 +37,13 @@ module.exports = function (req, res) {
                         refToken.issuedFor = user.username;
                         refToken.save(function (err) {
                             if (err) {
+                                console.log(di + "token save error");
                                 return res.json({
                                     status: false,
                                     msg: messages.generalError
                                 })
                             } else {
+                                console.log(di + "login ok, tokens generated");
                                 return res.json({
                                     status: true,
                                     msg: messages.generalSuccess,
@@ -49,6 +53,7 @@ module.exports = function (req, res) {
                             }
                         })
                     } else {
+                        console.log(di + "password error");
                         return res.json({
                             status: false,
                             msg: messages.errorPass
@@ -56,6 +61,7 @@ module.exports = function (req, res) {
                     }
                 })
             } else {
+                console.log(di + "username error");
                 return res.json({
                     status: false,
                     msg: messages.errorUser
