@@ -28,8 +28,8 @@ module.exports = function (req, res) {
                             name: user.username,
                             privilege: user.admin
                         }
-                        const newAccessToken = jwt.sign(serial, process.env.ACCESS_KEY_SECRET,
-                            {expiresIn: process.env.ACCESS_TOKEN_TIME});
+                        const newAccessToken = jwt.sign(serial, process.env.ACCESS_KEY_SECRET/*,
+                            {expiresIn: process.env.ACCESS_TOKEN_TIME}*/);
                         const newRefreshToken = jwt.sign(serial, process.env.REFRESH_KEY_SECRET);
                         let refToken = new tokenSchema();
                         refToken.type = "refresh";

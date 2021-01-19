@@ -20,7 +20,7 @@ module.exports = function (req, res) {
                         msg: messages.errorBadToken
                     })
                 } else {
-                    const newAccessToken = jwt.sign(user, process.env.ACCESS_KEY_SECRET, {expiresIn: process.env.ACCESS_TOKEN_TIME});
+                    const newAccessToken = jwt.sign(user, process.env.ACCESS_KEY_SECRET/*, {expiresIn: process.env.ACCESS_TOKEN_TIME}*/);
                     console.log(di + "token refreshed - " + user.name);
                     res.json({
                         status: true,
