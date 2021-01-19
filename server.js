@@ -14,8 +14,8 @@ const router = express.Router();
 const userApiRouter = require('./src/routes/api-user')(router); // routes for our api functionality
 
 // app config
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json({limit: '50mb'}));
+app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 
 // Mongo Database connection and settings
 mongoose.set('useNewUrlParser', true);
