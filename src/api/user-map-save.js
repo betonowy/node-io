@@ -75,8 +75,9 @@ module.exports = function (req, res) {
                                     status: true,
                                     msg: messages.generalSuccess
                                 })
-                            }, function () {
+                            }, function (err) {
                                 console.log(di + "save NOT ok")
+                                console.log(di + err)
                                 res.json({
                                     status: false,
                                     msg: messages.errorDatabaseError
@@ -97,6 +98,7 @@ module.exports = function (req, res) {
                 mapSaved.save(function (err) {
                     if (err) {
                         console.log(di + "save NOT ok")
+                        console.log(di + err)
                         res.json({
                             status: false,
                             msg: messages.errorDatabaseError
